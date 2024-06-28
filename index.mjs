@@ -16,7 +16,7 @@ const headers = {
 };
 
 const data = {
-  text: "Born and raised in the charming south, I can add a touch of sweet southern hospitality to your audiobooks and podcasts",
+  text: "Hey! I am Ursula - I fly across the galaxy to help kids become the best version of themselves. Let’s work together to turn you into a super parent!",
   model_id: "eleven_multilingual_v2",
   voice_settings: {
     stability: 0.5,
@@ -33,7 +33,9 @@ async function streamAudioWithTimestamps() {
 
   if (response.status !== 200) {
     console.error(
-      `Error encountered, status: ${response.status}, content: ${await response.text()}`,
+      `Error encountered, status: ${
+        response.status
+      }, content: ${await response.text()}`
     );
     return;
   }
@@ -74,10 +76,10 @@ async function streamAudioWithTimestamps() {
           if (responseData.alignment) {
             characters.push(...responseData.alignment.characters);
             startTimes.push(
-              ...responseData.alignment.character_start_times_seconds,
+              ...responseData.alignment.character_start_times_seconds
             );
             endTimes.push(
-              ...responseData.alignment.character_end_times_seconds,
+              ...responseData.alignment.character_end_times_seconds
             );
           }
         } catch (error) {
